@@ -1,6 +1,6 @@
 package dev.cookiecode.facegen.api.rest;
 
-import static lombok.AccessLevel.PRIVATE;
+import static lombok.AccessLevel.NONE;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -17,8 +17,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 /**
  * @author Sebastien Vermeille
  */
-@NoArgsConstructor(access = PRIVATE)
-// TODO: @UtilityClass ?
+@NoArgsConstructor(access = NONE)
 public class ApiClient {
 
   private static final String FACE_API_BASE_URL = "https://api.generated.photos/api/";
@@ -37,12 +36,10 @@ public class ApiClient {
       = new HttpLoggingInterceptor()
       .setLevel(HttpLoggingInterceptor.Level.BASIC);
 
-  // TODO: used for tests but should be done in a nicer way
   public static Retrofit retrofit = builder.build();
 
   private static final OkHttpClient.Builder httpClient
       = new OkHttpClient.Builder();
-
 
   public static <S> S createService(@NonNull final Class<S> serviceClass) {
 

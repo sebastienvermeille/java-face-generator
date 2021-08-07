@@ -20,6 +20,8 @@ import retrofit2.http.Query;
 public interface FaceResource {
 
   @GET("v1/faces")
+  @SuppressWarnings("squid:S107")
+    // Sonar should not consider this method as something having too many parameters, the API is like that.
   Call<FacesResponse> getFace(
       @Query("version") @Nullable Integer version,
       @Query("confidence") @Nullable Float confidence,
